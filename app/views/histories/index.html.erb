@@ -17,7 +17,8 @@
           <small><%= time_ago_in_words(history.created_at) %> ago</small>
           <p><%= history.content.truncate(150)  %></p>
           <p><%= link_to 'Show', history, class: "btn btn-primary" %>
-          <% if (user_signed_in? && history.user == current_user) || history.user.is_admin? %>
+
+          <% if (user_signed_in? && history.user == current_user) || (user_signed_in? && current_user.is_admin?) %>
             <%= link_to 'Edit', edit_history_path(history), class: "btn btn-warning" %>
             <%= link_to('Destroy', history, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger") %></p>
               <% end %>
