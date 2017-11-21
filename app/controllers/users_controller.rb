@@ -6,6 +6,13 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def toggle_admin
+    @user = User.find(params[:id])
+    @user.admin = !@user.admin
+    @user.save
+    redirect_to users_index_path
+  end
+
   private
   def authenticate_admin!
     unless current_user.is_admin?

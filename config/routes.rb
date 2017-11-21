@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'users/index'
+  put 'users/:id', to: 'users#toggle_admin', as: 'admin'
 
   devise_for :users, controllers: {
         registrations: 'users/registrations'

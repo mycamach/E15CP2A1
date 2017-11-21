@@ -1,3 +1,16 @@
-<% @users.each do |u| %>
-<%= u.name %>
+<h1>Usuarios</h1>
+
+<% @users.each do |user| %>
+  <div class="well well-lg">
+    <h2> <%= user.name %> </h2>
+    <% if user.admin %>
+      <%= 'Admin = SI' %>
+    <% else %>
+      <%= 'Admin = NO' %>
+    <% end %>
+<div>
+    <%= link_to 'Cambiar permisos', admin_path(user.id), method: :put, class:'btn btn-primary' %>
+  </div>
+  </div>
 <% end %>
+
